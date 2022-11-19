@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='index.css')}}">
+
+    <title>Expense Tracker | Login</title>
+    <script>
+        window.addEventListener( "pageshow", function ( event ) {
+        var historyTraversal = event.persisted || ( typeof window.performance != "undefined" && window.performance.navigation.type === 2 );
+        if ( historyTraversal ) {
+            window.location.reload();
+        }
+        });
+    </script>
+</head>
+<body>
+    <div class="login-body">
+        <div class="inner-body">
+            <h1 class="h11">Personal Expence Tracker</h1>
+            <div class="container">
+                <div class="box">
+                    <form action="/login" method="post">
+                        <span class="text-center">LOGIN</span>
+                        <div class="input-container">   
+                            <h4 class="msg">{{m}}</h4>
+                            <label>Username</label>	
+                            <input type="text" name="username" required=""/>
+                            <label>Password</label>
+                            <input type="password" name="password"  required=""/> 
+                            <button  class="btn">submit</button>
+                        </div>
+                    </form>	
+                    <label>Forgot password? </label><br/>
+                    <a class="sign" href="/register"><label>Sign-up</label></a>
+                </div>
+                <div class="box1">
+                    <h1>Track Your Daily Expenses ! Here</h1>
+                    <img src="{{url_for('static',filename='Mar-Business_11.jpg')}}"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

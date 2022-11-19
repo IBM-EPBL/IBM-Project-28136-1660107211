@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='add.css')}}"/>
+    <title>Expense Tracker | change</title>
+    <script>
+        window.addEventListener( "pageshow", function ( event ) {
+        var historyTraversal = event.persisted || ( typeof window.performance != "undefined" && window.performance.navigation.type === 2 );
+        if ( historyTraversal ) {
+            window.location.reload();
+        }
+        });
+    </script>
+</head>
+<body>
+    <div class="contain">
+        <div class="whole_credit">
+            <nav class="side_bar"> 
+                <ul>                                        
+                    <li class="avator"><img src="{{url_for('static',filename='man.png')}}"/></li>
+                    <li>Welcome {{session.get('name')}}</li>
+                    <li><a href="/home">Home</a></li>
+                    <li>Your Available Balance is {{session.get('income')}}</li>
+                    <li><a href="/transactions">Transactions</a></li>
+                    <li><a href="/credit">Credit</a></li>
+                    <li><a href="/debit">Debit</a></li>
+                    <li><a href="/logout">logout</a></li>
+                </ul>
+            </nav>
+            <div class="credit_center">
+                <h1>Change Password</h1>
+                <form action="/change" method="post">
+                    {{msg}}
+                    <label>Old Password</label>
+                    <input type="text" name="oldpass" required/>
+                    <label>New Password</label>
+                    <input type="text" name="newpass" required/>
+                    <button class="btn1" >Change</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

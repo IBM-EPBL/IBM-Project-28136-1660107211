@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='add.css')}}"/>
+    <title>Expense Tracker | Transactions</title>
+    <script>
+        window.addEventListener( "pageshow", function ( event ) {
+        var historyTraversal = event.persisted || ( typeof window.performance != "undefined" && window.performance.navigation.type === 2 );
+        if ( historyTraversal ) {
+            window.location.reload();
+        }
+        });
+    </script>
+</head>
+<body>
+    <div class="contain">
+        <div class="whole_credit">
+            <nav class="side_bar"> 
+                <ul>                                        
+                    <li class="avator"><img src="{{url_for('static',filename='man.png')}}"/></li>
+                    <li>Welcome {{session.get('name')}}</li>
+                    <li><a href="/home">Home</a></li>
+                    <li>Your Available Balance is {{session.get('income')}}</li>
+                    <li><a href="/credit">Credit</a></li>
+                    <li><a href="/debit">Debit</a></li>
+                    <li><a href="/changepass">Change Password</a></li>
+                    <li><a href="/logout">logout</a></li>
+                </ul>
+            </nav>
+            <div class="credit_center">
+                <h2 style="text-align: center;margin-bottom: 20px;">Your Transaction History</h2>
+                <div class="transaction_table">
+                    <table>
+                        <thead>
+                            <th>Amount</th>
+                            <th>Reason</th>
+                            <th>Type</th>
+                            <th>Date</th>
+                            <th>TIME</th>
+                        </thead>
+                        {% for x in tra %}
+                        <tr>
+                            <td>{{x.AMOUNT}}</td>
+                            <td>{{x.REASON}}</td>
+                            <td>{{x.TYPE}}</td>
+                            <td>{{x.DATE}}</td>
+                            <td>{{x.TIME}}</td>
+                        </tr>
+                        {% endfor %}                    
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

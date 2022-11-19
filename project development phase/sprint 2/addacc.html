@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker | Welcome </title>
+    <script>
+        window.addEventListener( "pageshow", function ( event ) {
+        var historyTraversal = event.persisted || ( typeof window.performance != "undefined" && window.performance.navigation.type === 2 );
+        if ( historyTraversal ) {
+            window.location.reload();
+        }
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="inner-box-add">
+            <h1>Add Your Income </h1>
+            
+            <form action="/addincome" method="post">
+                <input type="text" value="{{session.get('name')}}" name="uname" /> 
+                <label>Montly Income</label>
+                <input type="text" name="income" required/>
+                <label>Available balance</label>
+                <input type="text" name="balance" required/>
+                <input type="submit" value="add" />
+            </form>
+        </div>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='register.css')}}">
+    <title>Expense Tracker | Register </title>
+    <script>
+        window.addEventListener( "pageshow", function ( event ) {
+        var historyTraversal = event.persisted || ( typeof window.performance != "undefined" && window.performance.navigation.type === 2 );
+        if ( historyTraversal ) {
+            window.location.reload();
+        }
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1 style="text-align: center;margin:10px">Personal Expence Tracker</h1>
+        <form name="submit" action="newuser" method="post">
+            <h1 style="text-align: center;">Register</h1>
+            <h5 class="msg">{{msg}}</h5>
+            <div class="inputs">
+                <label>Name</label>
+                <input class="inputbox"  type="text"  required name="name">
+                <label>Email</label>
+                <input class="inputbox" type="email"  name= "email" required>
+                <label>Username</label>
+                <input class="inputbox" type="text" name="uname"   required >
+                <label>Password</label>
+                <input class="inputbox" type="password" name="password"   required >
+                <input id="inputbox" type="submit" value="submit" placeholder="register">
+            </div>
+            <label class="lab-1">Already a user? <a href="/">Login</a></label>
+        </form>
+    </div>
+</body>
+</html>
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='home.css')}}"/>
+    <title>Expense Tracker | Home</title>
+    <script>
+        window.addEventListener( "pageshow", function ( event ) {
+        var historyTraversal = event.persisted || ( typeof window.performance != "undefined" && window.performance.navigation.type === 2 );
+        if ( historyTraversal ) {
+            window.location.reload();
+        }
+        });
+    </script>
+</head>
+<body>
+    <div class="home-container">
+        <h1 class="h11">Personal Expence Tracker</h1>
+        <div class="inner-home">
+            <nav class="side_bar"> 
+                <ul>                                        
+                    <li class="avator"><img src="{{url_for('static',filename='man.png')}}"/></li>
+                    <li>Welcome {{session.get('name')}}</li>
+                    <li>Expense till date {{session.get('expense')}}</li>
+                    <li>Your Available Balance is {{session.get('income')}}</li>
+                    <li><a href="/transactions">Transactions</a></li>
+                    <li><a href="/changepass">Change Password</a></li>
+                    <li><a href="/logout">logout</a></li>
+                </ul>
+            </nav>
+            <div class="rightside">
+                <div class="right-top">
+                    <h2>Track your bank accounts with us</h2>
+                    <a href="/credit"><button class="btn">Add income</button></a>
+                    <a href="/debit"><button class="btn">Add Expense</button></a>
+                </div>
+                <div class="home_img">
+                    <img  src="{{url_for('static',filename='home.jpg')}}"/>
+                </div>
+                <div class="transaction_table">
+                    <h2>Your previous Transactions</h2>
+                    <table>
+                        <thead>
+                            <th>Amount</th>
+                            <th>Reason</th>
+                            <th>Type</th>
+                            <th>Date</th>
+                            <th>TIME</th>
+                        </thead>
+                        {% set a=0%}
+                        {% for x in tra %}
+                        <tr>
+                            {% if a < 5 %}
+                                <td>{{x.AMOUNT}}</td>
+                                <td>{{x.REASON}}</td>
+                                <td>{{x.TYPE}}</td>
+                                <td>{{x.DATE}}</td>
+                                <td>{{x.TIME}}</td>
+                                {% set a=a+1 %}
+                            {% endif %}
+                        </tr>
+                        
+                        {% endfor %}                    
+                    </table> 
+                </div>
+            </div>            
+        </div>
+    </div>
+</body>
+</html>
